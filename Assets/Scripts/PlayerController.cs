@@ -24,14 +24,19 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
     }
-    private void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter (Collider other)
 {
     if(other.CompareTag("Powerups"))
     {
         hasPowerup = true;
-        Destroy(other.gameObject);
+        Destroy (other.gameObject);
+        StartCoroutine (PowerupCountdownRoutine());
     }
-
+}
+IEnumerator PowerupCountdownRoutine()
+{
+    yield return new WaitForSeconds (7);
+    hasPowerup = false;
 }
 private void OnCollisionEnter(Collision collision)
 {
