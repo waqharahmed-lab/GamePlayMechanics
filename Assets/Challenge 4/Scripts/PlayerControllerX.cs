@@ -17,6 +17,7 @@ public class PlayerControllerX : MonoBehaviour
     
     void Start()
     {
+    
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
     }
@@ -40,6 +41,7 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
+             StartCoroutine(PowerupCooldown());
         }
     }
 
