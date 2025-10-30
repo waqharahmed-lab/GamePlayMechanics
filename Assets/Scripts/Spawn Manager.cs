@@ -9,7 +9,7 @@ private float spawnRange = 9.0f;
 // Start is called before the first frame update
 void Start()
 {
-    SpawnEnemyWave();
+    SpawnEnemyWave(3);
     
 }
 
@@ -17,9 +17,9 @@ void Start()
 void Update()
 {
 }
-void SpawnEnemyWave()
+void SpawnEnemyWave(int enemyToSpawn)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < enemyToSpawn; i++)
     {
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
     }
