@@ -7,11 +7,13 @@ public class SpawnManager : MonoBehaviour
     private float spawnRange = 9.0f;
     public int enemyCount;
     public int waveNumber = 1;
+    public GameObject powerupPrefab;
 
 // Start is called before the first frame update
 void Start()
 {
-    SpawnEnemyWave(waveNumber);
+        SpawnEnemyWave(waveNumber);
+    Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     
 }
 
@@ -23,7 +25,8 @@ void Update()
     if(enemyCount == 0)
         {
             waveNumber++;
-        SpawnEnemyWave(waveNumber);
+            SpawnEnemyWave(waveNumber);
+         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 }
 void SpawnEnemyWave(int enemyToSpawn)
